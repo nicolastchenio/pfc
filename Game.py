@@ -9,7 +9,7 @@ class Game:
         self.GAME_ROUNDS = 3
         
     # verif the player choise
-    def verif_choise(self, choise):
+    def __verif_choise(self, choise):
         if choise == "p":
             return "pierre"
         elif choise == "f":
@@ -22,7 +22,7 @@ class Game:
             return None
         
     # verif if the player win
-    def verif_player_win(self, choise_player, choise_Ia):
+    def __verif_player_win(self, choise_player, choise_Ia):
         if choise_player == "pierre" and choise_Ia == "feuille":
             return False
         elif choise_player == "feuille" and choise_Ia == "ciseaux":
@@ -35,7 +35,7 @@ class Game:
             return True
         
     # play one round
-    def play_round(self):
+    def __play_round(self):
         choise_Ia = random.choice(self.choise_list)
         choise_player = input(
             "Choisir entre pierre, feuille, ciseaux ?\n"
@@ -44,7 +44,7 @@ class Game:
             "Pour ciseaux taper c\n"
         )
 
-        while self.verif_choise(choise_player) == None:
+        while self.__verif_choise(choise_player) == None:
             print("---------------")
             print("Choix invalide, veuiller réessayer!")
             choise_player = input(
@@ -54,10 +54,11 @@ class Game:
                 "Pour ciseaux taper c\n"
             )
 
-        player_win = self.verif_player_win(self.verif_choise(choise_player), choise_Ia)
+        player_win = self.__verif_player_win(self.__verif_choise(choise_player), choise_Ia)
+    
         return player_win, choise_Ia, choise_player
     
-    def game_part(self):
+    def __game_part(self):
         round_counter = 0
         score_player = 0
         score_Ia = 0
@@ -65,10 +66,10 @@ class Game:
         while round_counter < self.GAME_ROUNDS:
             print(f"\n--- Manche {round_counter + 1} ---")
             
-            player_win, choise_Ia, choise_player = self.play_round()
+            player_win, choise_Ia, choise_player = self.__play_round()
             
             print("--- Résultat ---")
-            print(f"Vous aviez choisi {self.verif_choise(choise_player)} et l'IA avait choisi {choise_Ia}")
+            print(f"Vous aviez choisi {self.__verif_choise(choise_player)} et l'IA avait choisi {choise_Ia}")
             
             if player_win == True:
                 print("\nVous avez donc gagné cette manche !")
@@ -94,7 +95,7 @@ class Game:
         print("Bonne chance !")
         
         while play:
-            score_player, score_Ia = self.game_part()
+            score_player, score_Ia = self.__game_part()
         
             if score_player > score_Ia:
                 self.game_player_win += 1
