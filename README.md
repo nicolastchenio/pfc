@@ -1,6 +1,13 @@
-# Consisignes du projet #
+# Consignes du projet #
 
 Utiliser la version python => Python 3.13.7
+
+Utiliser le fichier requirements.tx pour charger les librairies du projets notamment avec lacommande :
+```
+pip freeze > requirements.txt
+```
+
+Le projet est clonable sur https://github.com/nicolastchenio/pfc
 
 
 # Sujet #
@@ -43,7 +50,7 @@ En tant que développeur Python débutant, je dois savoir:
   - Readme.md
   - Feedback.md
     - les points positifs (clarté, organisation, bonnes pratiques)  
-	- les points d’amélioration (code à simplifier, validation des entrées, etc.)  
+	  - les points d’amélioration (code à simplifier, validation des entrées, etc.)  
     - des suggestions bonus (extensions possibles) 
 
 ## Critères de performance ##
