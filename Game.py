@@ -1,15 +1,18 @@
 import random
 
 class Game:
+    
+    CHOISE_LIST = ["pierre", "feuille", "ciseaux"]
+    GAME_ROUNDS = 3
+     
     def __init__(self, game_counter=1, game_player_win=0, game_Ia_win=0):
         self.game_counter = game_counter
         self.game_player_win = game_player_win
         self.game_Ia_win = game_Ia_win 
-        self.choise_list = ["pierre", "feuille", "ciseaux"]
-        self.GAME_ROUNDS = 3
         
     # verif the player choise
-    def __verif_choise(self, choise):
+    @staticmethod
+    def __verif_choise(choise):
         if choise == "p":
             return "pierre"
         elif choise == "f":
@@ -22,7 +25,8 @@ class Game:
             return None
         
     # verif if the player win
-    def __verif_player_win(self, choise_player, choise_Ia):
+    @staticmethod
+    def __verif_player_win(choise_player, choise_Ia):
         if choise_player == "pierre" and choise_Ia == "feuille":
             return False
         elif choise_player == "feuille" and choise_Ia == "ciseaux":
@@ -36,7 +40,7 @@ class Game:
         
     # play one round
     def __play_round(self):
-        choise_Ia = random.choice(self.choise_list)
+        choise_Ia = random.choice(self.CHOISE_LIST)
         choise_player = input(
             "Choisir entre pierre, feuille, ciseaux ?\n"
             "Pour pierre taper p\n"
